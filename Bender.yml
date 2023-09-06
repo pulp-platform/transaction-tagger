@@ -1,0 +1,32 @@
+# Copyright 2023 ETH Zurich and University of Bologna.
+# Solderpad Hardware License, Version 0.51, see LICENSE for details.
+# SPDX-License-Identifier: SHL-0.51
+
+package:
+  name: tagger
+  authors:
+    - "Diyou Shen <dishen@student.ethz.ch>"
+
+
+dependencies:
+  axi:                      { git: "https://github.com/pulp-platform/axi",                    version: 0.39.0 }
+  common_cells:             { git: "https://github.com/pulp-platform/common_cells",           version: 1.29.0 }
+  common_verification:      { git: "https://github.com/pulp-platform/common_verification",    version: 0.2.0  }
+  register_interface:       { git: "https://github.com/pulp-platform/register_interface",     version: 0.4.1  }  # TODO: master commit; use next release once out
+  tech_cells_generic:       { git: "https://github.com/pulp-platform/tech_cells_generic.git", version: 0.2.9  }
+
+export_include_dirs:
+  - include
+
+sources:
+  - src/tagger_reg_reg_pkg.sv
+  - src/tagger_reg_reg_top.sv
+  - src/tagger.sv
+  - src/tagger_patid.sv
+  - src/tagger_regs_wrap.sv
+  
+
+  - target: test
+    files:
+      - test/tb_tagger.sv
+      - test/user_checker.sv

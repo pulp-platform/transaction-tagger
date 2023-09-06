@@ -1,0 +1,8 @@
+.bender
+modelsim.ini
+work
+transcript
+scripts/compile_vsim.tcl
+logs/*
+bender
+src.list
