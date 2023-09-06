@@ -9,10 +9,6 @@ module tagger #(
     parameter int unsigned DATA_WIDTH     	= 64,
     // width of address bus in bits
     parameter int unsigned ADDR_WIDTH     	= 64,
-    // width of id signal
-    parameter int unsigned ID_WIDTH       	= 8,
-    // propagate awuser signal
-    parameter int unsigned USER_WIDTH     	= 0,
     // Number of partition supported
     parameter int unsigned MAXPARTITION   	= 16,
     // LLC user signal offset

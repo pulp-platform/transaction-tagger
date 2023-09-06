@@ -25,13 +25,18 @@ module tagger_regs_wrap #(
 	tagger_reg_reg_pkg::tagger_reg_hw2reg_t tagger_hw2reg;
 	tagger_reg_reg_pkg::tagger_reg_reg2hw_t tagger_reg2hw;
 
+	
+	// The following parameters are used to correctly decode the register values and put
+	// them into tables for quicker access later.
+	
 	localparam int unsigned NUM_ENTRY_PER_REG 	= 32/PATID_LEN;
 	localparam int unsigned PATID_REG_LEN 		= NUM_ENTRY_PER_REG*PATID_LEN;
 
-	localparam int unsigned NUM_PATID_REG 		= ($ceil(MAXPARTITION/NUM_ENTRY_PER_REG) > 0) ? 
-												  ($ceil(MAXPARTITION/NUM_ENTRY_PER_REG)) : 1 ;
-	localparam int unsigned NUM_CONF_REG 		= ($ceil(MAXPARTITION/16) > 0) ? 
-												  ($ceil(MAXPARTITION/16) > 0) : 1;
+	localparam int unsigned NUM_PATID_REG 	= (MAXPARTITION % NUM_ENTRY_PER_REG == 0) ?
+											  (MAXPARTITION/NUM_ENTRY_PER_REG) : (MAXPARTITION/NUM_ENTRY_PER_REG+1);
+	localparam int unsigned NUM_CONF_REG 	= (MAXPARTITION % 16 == 0) ?
+											  (MAXPARTITION/16) : (MAXPARTITION/16+1);
+	
 
 	// register top
 	tagger_reg_reg_top #(

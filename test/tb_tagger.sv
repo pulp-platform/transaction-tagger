@@ -408,8 +408,6 @@ module tb_tagger #(
 	tagger #(
 		.DATA_WIDTH       	( TbAxiDataWidthFull  	),
 		.ADDR_WIDTH       	( TbAxiAddrWidthFull    ),
-		.ID_WIDTH         	( TbAxiIdWidthFull		),
-		.USER_WIDTH       	( TbAxiUserWidthFull    ),
 		.MAXPARTITION     	( TbMaxPartition    	),
 		.AXI_USER_ID_MSB  	( TbAxiUserIdMsb   		),
 		.AXI_USER_ID_LSB  	( TbAxiUserIdLsb 		),
