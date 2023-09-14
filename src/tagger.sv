@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: SHL-0.51
 //
 // Diyou Shen 	<dishen@student.ethz.ch>
+// Hong Pang 	<hopang@student.ethz.ch>
 
 module tagger #(
 	// width of data bus in bits
@@ -51,6 +52,11 @@ module tagger #(
   	logic [MAXPARTITION-1:0] match_r, match_w;
   	// current incoming address
   	logic [ADDR_WIDTH-1:0] tagger_addr_r, tagger_addr_w;
+  	// counting the trailing zeros to determine the first match signal
+  	// if an address matches two or more tagger regions, which is a configuration error,
+  	// this algorithm will always select the lower partition
+  	logic [$clog2(MAXPARTITION)-1:0] trail_zero_r, trail_zero_w;
+  	logic empty_r, empty_w;
 
 	typedef struct packed {
 		// logic [7:0] 	patid;
@@ -110,6 +116,15 @@ module tagger #(
 		);
 	end
 
+	lzc #(
+		.WIDTH 		( MAXPARTITION 	),
+		.MODE 		( 1'b0 			)
+	) i_lzc_r (
+		.in_i   	( match_r   	),
+		.cnt_o  	( trail_zero_r 	),
+		.empty_o 	( empty_r 		)
+	);
+
 	// Write Channel Tagging
 	always_comb begin
 		tagger_addr_w = slv_req_i.aw.addr;
@@ -132,7 +147,15 @@ module tagger #(
 			.match_o	 		( match_w [i]			)
 		);
 	end
-	
+
+	lzc #(
+		.WIDTH 		( MAXPARTITION 	),
+		.MODE 		( 1'b0 			)
+	) i_lzc_w (
+		.in_i   	( match_w   	),
+		.cnt_o  	( trail_zero_w 	),
+		.empty_o 	( empty_w 		)
+	);	
 
 
 	// Register (cfg_rsp_mod) holds the table for range of each partition
@@ -142,17 +165,18 @@ module tagger #(
 		// Pass signals by default
 		mst_req_o = slv_req_i;
 		slv_rsp_o = mst_rsp_i;
-		patid_r = slv_req_i.ar.user;
-		patid_w = slv_req_i.aw.user;
+		// Set user signal default to zero
+		patid_r = '0;
+		patid_w = '0;
 
-		for (int unsigned j = 0; j < MAXPARTITION; j++) begin
-			if (match_w[j]) begin
-				patid_w = tag_tab[j].patid;
-			end
-			if (match_r[j]) begin
-				patid_r = tag_tab[j].patid;
-			end
+		if (~empty_r) begin
+			patid_r = tag_tab[trail_zero_r].patid;
 		end
+
+		if (~empty_w) begin
+			patid_w = tag_tab[trail_zero_w].patid;
+		end
+
 		mst_req_o.ar.user[AXI_USER_ID_MSB:AXI_USER_ID_LSB] = patid_r;
 		mst_req_o.aw.user[AXI_USER_ID_MSB:AXI_USER_ID_LSB] = patid_w;
 		
