@@ -67,20 +67,33 @@ module tagger_regs_wrap #(
 	// Serilize the patid registers
 	always_comb begin
 		for (int unsigned i = 0; i < NUM_PATID_REG; i++) begin
+			tagger_hw2reg.patid[i].d = tagger_reg2hw.patid[i].q;
 			// i = 0 => PATID_REG_LEN-1:0; i = 1 => PATID_REG_LEN*2-1:PATID_REG_LEN
 			patid_table[(PATID_REG_LEN*(i+1)-1)-:PATID_REG_LEN] = tagger_reg2hw.patid[i].q[PATID_REG_LEN-1:0];
+			tagger_hw2reg.patid[i].de = 1;
 		end
 	end
 
 	// Serilize the conf registers
 	always_comb begin
 		for (int unsigned i = 0; i < NUM_CONF_REG; i++) begin
+			tagger_hw2reg.addr_conf[i].d = tagger_reg2hw.addr_conf[i].q;
 			conf_table[(32*(i+1)-1)-:32] = tagger_reg2hw.addr_conf[i].q;
+			tagger_hw2reg.addr_conf[i].de = 1;
+		end
+	end
+
+	always_comb begin
+		for (int unsigned i = 0; i < MAXPARTITION; i++) begin
+			tagger_hw2reg.pat_addr[i].d = tagger_reg2hw.pat_addr[i].q;
+			tagger_hw2reg.pat_addr[i].de = 1;
 		end
 	end
 
 	always_comb begin
 		tag_tab_d = tag_tab_q;
+		tagger_hw2reg.pat_commit[0].de = 0;
+
 		// only pass the signal when commit is high
 		if (tagger_reg2hw.pat_commit[0].q) begin
 			for (int unsigned k = 0; k < MAXPARTITION; k++) begin 
@@ -94,8 +107,9 @@ module tagger_regs_wrap #(
 				tag_tab_d[k].conf 		= conf_temp[1:0];
 			end
 			// clear the commit signal after reading
-			tagger_hw2reg.pat_commit[0].de = 1;
+			
 			tagger_hw2reg.pat_commit[0].d = 0;
+			tagger_hw2reg.pat_commit[0].de = 1;
 		end
 	end
 

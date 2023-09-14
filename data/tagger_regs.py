@@ -54,7 +54,7 @@ with open('data/tagger_regs.hjson', 'w') as f:
             count: "{MaxPartition}",
             cname: "TAGGER",
             swaccess: "rw",
-            hwaccess: "hro",
+            hwaccess: "hrw",
             fields: [{{
                 bits: "31:0",
                 name: "PAT_ADDR",
@@ -69,7 +69,7 @@ with open('data/tagger_regs.hjson', 'w') as f:
             count: "{num_patid_reg}",
             cname: "TAGGER",
             swaccess: "rw",
-            hwaccess: "hro",
+            hwaccess: "hrw",
             fields: [{{
                 bits: "31:0",
                 name: "PATID",
@@ -84,7 +84,7 @@ with open('data/tagger_regs.hjson', 'w') as f:
             count: "{num_conf_reg}",
             cname: "TAGGER",
             swaccess: "rw",
-            hwaccess: "hro",
+            hwaccess: "hrw",
             fields: [{{
                 bits: "31:0",
                 name: "addr_comf",

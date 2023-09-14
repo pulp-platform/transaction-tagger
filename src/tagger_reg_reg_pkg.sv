@@ -34,6 +34,21 @@ package tagger_reg_reg_pkg;
     logic        de;
   } tagger_reg_hw2reg_pat_commit_mreg_t;
 
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } tagger_reg_hw2reg_pat_addr_mreg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } tagger_reg_hw2reg_patid_mreg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } tagger_reg_hw2reg_addr_conf_mreg_t;
+
   // Register -> HW type
   typedef struct packed {
     tagger_reg_reg2hw_pat_commit_mreg_t [0:0] pat_commit; // [320:320]
@@ -44,7 +59,10 @@ package tagger_reg_reg_pkg;
 
   // HW -> register type
   typedef struct packed {
-    tagger_reg_hw2reg_pat_commit_mreg_t [0:0] pat_commit; // [1:0]
+    tagger_reg_hw2reg_pat_commit_mreg_t [0:0] pat_commit; // [331:330]
+    tagger_reg_hw2reg_pat_addr_mreg_t [7:0] pat_addr; // [329:66]
+    tagger_reg_hw2reg_patid_mreg_t [0:0] patid; // [65:33]
+    tagger_reg_hw2reg_addr_conf_mreg_t [0:0] addr_conf; // [32:0]
   } tagger_reg_hw2reg_t;
 
   // Register offsets

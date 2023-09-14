@@ -11,7 +11,7 @@ REGGEN_PATH  = $(shell $(BENDER) path register_interface)/vendor/lowrisc_opentit
 REGGEN	     = $(PYTHON) $(REGGEN_PATH)
 
 REGWIDTH        	= 32
-MAXPARTITION 		= 16
+MAXPARTITION 		= 8
 PATID_LEN 			= 4
 TAGGER_REGS_PATH   	= data/tagger_regs.py
 
@@ -30,7 +30,7 @@ help:
 	@echo "-------------"
 	@echo "REGWIDTH:                          memory-mapped register width, default to 32 bits"
 	@echo ""
-	@echo "MAXPARTITION:                      max number of partitions supported, default to 16"
+	@echo "MAXPARTITION:                      max number of partitions supported, default to 8"
 	@echo ""
 	@echo "PATID_LEN:                         number of bits of patid, default to 4 bits"
 	@echo ""

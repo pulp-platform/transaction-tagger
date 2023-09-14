@@ -149,8 +149,8 @@ module tagger_reg_reg_top #(
     .wd     (pat_addr_0_wd),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0  ),
+    .de     (hw2reg.pat_addr[0].de),
+    .d      (hw2reg.pat_addr[0].d ),
 
     // to internal hardware
     .qe     (),
@@ -176,8 +176,8 @@ module tagger_reg_reg_top #(
     .wd     (pat_addr_1_wd),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0  ),
+    .de     (hw2reg.pat_addr[1].de),
+    .d      (hw2reg.pat_addr[1].d ),
 
     // to internal hardware
     .qe     (),
@@ -203,8 +203,8 @@ module tagger_reg_reg_top #(
     .wd     (pat_addr_2_wd),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0  ),
+    .de     (hw2reg.pat_addr[2].de),
+    .d      (hw2reg.pat_addr[2].d ),
 
     // to internal hardware
     .qe     (),
@@ -230,8 +230,8 @@ module tagger_reg_reg_top #(
     .wd     (pat_addr_3_wd),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0  ),
+    .de     (hw2reg.pat_addr[3].de),
+    .d      (hw2reg.pat_addr[3].d ),
 
     // to internal hardware
     .qe     (),
@@ -257,8 +257,8 @@ module tagger_reg_reg_top #(
     .wd     (pat_addr_4_wd),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0  ),
+    .de     (hw2reg.pat_addr[4].de),
+    .d      (hw2reg.pat_addr[4].d ),
 
     // to internal hardware
     .qe     (),
@@ -284,8 +284,8 @@ module tagger_reg_reg_top #(
     .wd     (pat_addr_5_wd),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0  ),
+    .de     (hw2reg.pat_addr[5].de),
+    .d      (hw2reg.pat_addr[5].d ),
 
     // to internal hardware
     .qe     (),
@@ -311,8 +311,8 @@ module tagger_reg_reg_top #(
     .wd     (pat_addr_6_wd),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0  ),
+    .de     (hw2reg.pat_addr[6].de),
+    .d      (hw2reg.pat_addr[6].d ),
 
     // to internal hardware
     .qe     (),
@@ -338,8 +338,8 @@ module tagger_reg_reg_top #(
     .wd     (pat_addr_7_wd),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0  ),
+    .de     (hw2reg.pat_addr[7].de),
+    .d      (hw2reg.pat_addr[7].d ),
 
     // to internal hardware
     .qe     (),
@@ -367,8 +367,8 @@ module tagger_reg_reg_top #(
     .wd     (patid_wd),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0  ),
+    .de     (hw2reg.patid[0].de),
+    .d      (hw2reg.patid[0].d ),
 
     // to internal hardware
     .qe     (),
@@ -396,8 +396,8 @@ module tagger_reg_reg_top #(
     .wd     (addr_conf_wd),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0  ),
+    .de     (hw2reg.addr_conf[0].de),
+    .d      (hw2reg.addr_conf[0].d ),
 
     // to internal hardware
     .qe     (),

@@ -39,7 +39,7 @@
             count: "8",
             cname: "TAGGER",
             swaccess: "rw",
-            hwaccess: "hro",
+            hwaccess: "hrw",
             fields: [{
                 bits: "31:0",
                 name: "PAT_ADDR",
@@ -54,7 +54,7 @@
             count: "1",
             cname: "TAGGER",
             swaccess: "rw",
-            hwaccess: "hro",
+            hwaccess: "hrw",
             fields: [{
                 bits: "31:0",
                 name: "PATID",
@@ -69,7 +69,7 @@
             count: "1",
             cname: "TAGGER",
             swaccess: "rw",
-            hwaccess: "hro",
+            hwaccess: "hrw",
             fields: [{
                 bits: "31:0",
                 name: "addr_comf",
