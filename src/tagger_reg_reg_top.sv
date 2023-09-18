@@ -10,7 +10,7 @@
 module tagger_reg_reg_top #(
   parameter type reg_req_t = logic,
   parameter type reg_rsp_t = logic,
-  parameter int AW = 6
+  parameter int AW = 7
 ) (
   input logic clk_i,
   input logic rst_ni,
@@ -95,9 +95,39 @@ module tagger_reg_reg_top #(
   logic [31:0] pat_addr_7_qs;
   logic [31:0] pat_addr_7_wd;
   logic pat_addr_7_we;
-  logic [31:0] patid_qs;
-  logic [31:0] patid_wd;
-  logic patid_we;
+  logic [31:0] pat_addr_8_qs;
+  logic [31:0] pat_addr_8_wd;
+  logic pat_addr_8_we;
+  logic [31:0] pat_addr_9_qs;
+  logic [31:0] pat_addr_9_wd;
+  logic pat_addr_9_we;
+  logic [31:0] pat_addr_10_qs;
+  logic [31:0] pat_addr_10_wd;
+  logic pat_addr_10_we;
+  logic [31:0] pat_addr_11_qs;
+  logic [31:0] pat_addr_11_wd;
+  logic pat_addr_11_we;
+  logic [31:0] pat_addr_12_qs;
+  logic [31:0] pat_addr_12_wd;
+  logic pat_addr_12_we;
+  logic [31:0] pat_addr_13_qs;
+  logic [31:0] pat_addr_13_wd;
+  logic pat_addr_13_we;
+  logic [31:0] pat_addr_14_qs;
+  logic [31:0] pat_addr_14_wd;
+  logic pat_addr_14_we;
+  logic [31:0] pat_addr_15_qs;
+  logic [31:0] pat_addr_15_wd;
+  logic pat_addr_15_we;
+  logic [31:0] patid_0_qs;
+  logic [31:0] patid_0_wd;
+  logic patid_0_we;
+  logic [31:0] patid_1_qs;
+  logic [31:0] patid_1_wd;
+  logic patid_1_we;
+  logic [31:0] patid_2_qs;
+  logic [31:0] patid_2_wd;
+  logic patid_2_we;
   logic [31:0] addr_conf_qs;
   logic [31:0] addr_conf_wd;
   logic addr_conf_we;
@@ -349,22 +379,238 @@ module tagger_reg_reg_top #(
     .qs     (pat_addr_7_qs)
   );
 
-
-
-  // Subregister 0 of Multireg patid
-  // R[patid]: V(False)
+  // Subregister 8 of Multireg pat_addr
+  // R[pat_addr_8]: V(False)
 
   prim_subreg #(
     .DW      (32),
     .SWACCESS("RW"),
     .RESVAL  (32'h0)
-  ) u_patid (
+  ) u_pat_addr_8 (
     .clk_i   (clk_i    ),
     .rst_ni  (rst_ni  ),
 
     // from register interface
-    .we     (patid_we),
-    .wd     (patid_wd),
+    .we     (pat_addr_8_we),
+    .wd     (pat_addr_8_wd),
+
+    // from internal hardware
+    .de     (hw2reg.pat_addr[8].de),
+    .d      (hw2reg.pat_addr[8].d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.pat_addr[8].q ),
+
+    // to register interface (read)
+    .qs     (pat_addr_8_qs)
+  );
+
+  // Subregister 9 of Multireg pat_addr
+  // R[pat_addr_9]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("RW"),
+    .RESVAL  (32'h0)
+  ) u_pat_addr_9 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (pat_addr_9_we),
+    .wd     (pat_addr_9_wd),
+
+    // from internal hardware
+    .de     (hw2reg.pat_addr[9].de),
+    .d      (hw2reg.pat_addr[9].d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.pat_addr[9].q ),
+
+    // to register interface (read)
+    .qs     (pat_addr_9_qs)
+  );
+
+  // Subregister 10 of Multireg pat_addr
+  // R[pat_addr_10]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("RW"),
+    .RESVAL  (32'h0)
+  ) u_pat_addr_10 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (pat_addr_10_we),
+    .wd     (pat_addr_10_wd),
+
+    // from internal hardware
+    .de     (hw2reg.pat_addr[10].de),
+    .d      (hw2reg.pat_addr[10].d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.pat_addr[10].q ),
+
+    // to register interface (read)
+    .qs     (pat_addr_10_qs)
+  );
+
+  // Subregister 11 of Multireg pat_addr
+  // R[pat_addr_11]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("RW"),
+    .RESVAL  (32'h0)
+  ) u_pat_addr_11 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (pat_addr_11_we),
+    .wd     (pat_addr_11_wd),
+
+    // from internal hardware
+    .de     (hw2reg.pat_addr[11].de),
+    .d      (hw2reg.pat_addr[11].d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.pat_addr[11].q ),
+
+    // to register interface (read)
+    .qs     (pat_addr_11_qs)
+  );
+
+  // Subregister 12 of Multireg pat_addr
+  // R[pat_addr_12]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("RW"),
+    .RESVAL  (32'h0)
+  ) u_pat_addr_12 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (pat_addr_12_we),
+    .wd     (pat_addr_12_wd),
+
+    // from internal hardware
+    .de     (hw2reg.pat_addr[12].de),
+    .d      (hw2reg.pat_addr[12].d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.pat_addr[12].q ),
+
+    // to register interface (read)
+    .qs     (pat_addr_12_qs)
+  );
+
+  // Subregister 13 of Multireg pat_addr
+  // R[pat_addr_13]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("RW"),
+    .RESVAL  (32'h0)
+  ) u_pat_addr_13 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (pat_addr_13_we),
+    .wd     (pat_addr_13_wd),
+
+    // from internal hardware
+    .de     (hw2reg.pat_addr[13].de),
+    .d      (hw2reg.pat_addr[13].d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.pat_addr[13].q ),
+
+    // to register interface (read)
+    .qs     (pat_addr_13_qs)
+  );
+
+  // Subregister 14 of Multireg pat_addr
+  // R[pat_addr_14]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("RW"),
+    .RESVAL  (32'h0)
+  ) u_pat_addr_14 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (pat_addr_14_we),
+    .wd     (pat_addr_14_wd),
+
+    // from internal hardware
+    .de     (hw2reg.pat_addr[14].de),
+    .d      (hw2reg.pat_addr[14].d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.pat_addr[14].q ),
+
+    // to register interface (read)
+    .qs     (pat_addr_14_qs)
+  );
+
+  // Subregister 15 of Multireg pat_addr
+  // R[pat_addr_15]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("RW"),
+    .RESVAL  (32'h0)
+  ) u_pat_addr_15 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (pat_addr_15_we),
+    .wd     (pat_addr_15_wd),
+
+    // from internal hardware
+    .de     (hw2reg.pat_addr[15].de),
+    .d      (hw2reg.pat_addr[15].d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.pat_addr[15].q ),
+
+    // to register interface (read)
+    .qs     (pat_addr_15_qs)
+  );
+
+
+
+  // Subregister 0 of Multireg patid
+  // R[patid_0]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("RW"),
+    .RESVAL  (32'h0)
+  ) u_patid_0 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (patid_0_we),
+    .wd     (patid_0_wd),
 
     // from internal hardware
     .de     (hw2reg.patid[0].de),
@@ -375,7 +621,61 @@ module tagger_reg_reg_top #(
     .q      (reg2hw.patid[0].q ),
 
     // to register interface (read)
-    .qs     (patid_qs)
+    .qs     (patid_0_qs)
+  );
+
+  // Subregister 1 of Multireg patid
+  // R[patid_1]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("RW"),
+    .RESVAL  (32'h0)
+  ) u_patid_1 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (patid_1_we),
+    .wd     (patid_1_wd),
+
+    // from internal hardware
+    .de     (hw2reg.patid[1].de),
+    .d      (hw2reg.patid[1].d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.patid[1].q ),
+
+    // to register interface (read)
+    .qs     (patid_1_qs)
+  );
+
+  // Subregister 2 of Multireg patid
+  // R[patid_2]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("RW"),
+    .RESVAL  (32'h0)
+  ) u_patid_2 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (patid_2_we),
+    .wd     (patid_2_wd),
+
+    // from internal hardware
+    .de     (hw2reg.patid[2].de),
+    .d      (hw2reg.patid[2].d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.patid[2].q ),
+
+    // to register interface (read)
+    .qs     (patid_2_qs)
   );
 
 
@@ -410,7 +710,7 @@ module tagger_reg_reg_top #(
 
 
 
-  logic [10:0] addr_hit;
+  logic [20:0] addr_hit;
   always_comb begin
     addr_hit = '0;
     addr_hit[ 0] = (reg_addr == TAGGER_REG_PAT_COMMIT_OFFSET);
@@ -422,8 +722,18 @@ module tagger_reg_reg_top #(
     addr_hit[ 6] = (reg_addr == TAGGER_REG_PAT_ADDR_5_OFFSET);
     addr_hit[ 7] = (reg_addr == TAGGER_REG_PAT_ADDR_6_OFFSET);
     addr_hit[ 8] = (reg_addr == TAGGER_REG_PAT_ADDR_7_OFFSET);
-    addr_hit[ 9] = (reg_addr == TAGGER_REG_PATID_OFFSET);
-    addr_hit[10] = (reg_addr == TAGGER_REG_ADDR_CONF_OFFSET);
+    addr_hit[ 9] = (reg_addr == TAGGER_REG_PAT_ADDR_8_OFFSET);
+    addr_hit[10] = (reg_addr == TAGGER_REG_PAT_ADDR_9_OFFSET);
+    addr_hit[11] = (reg_addr == TAGGER_REG_PAT_ADDR_10_OFFSET);
+    addr_hit[12] = (reg_addr == TAGGER_REG_PAT_ADDR_11_OFFSET);
+    addr_hit[13] = (reg_addr == TAGGER_REG_PAT_ADDR_12_OFFSET);
+    addr_hit[14] = (reg_addr == TAGGER_REG_PAT_ADDR_13_OFFSET);
+    addr_hit[15] = (reg_addr == TAGGER_REG_PAT_ADDR_14_OFFSET);
+    addr_hit[16] = (reg_addr == TAGGER_REG_PAT_ADDR_15_OFFSET);
+    addr_hit[17] = (reg_addr == TAGGER_REG_PATID_0_OFFSET);
+    addr_hit[18] = (reg_addr == TAGGER_REG_PATID_1_OFFSET);
+    addr_hit[19] = (reg_addr == TAGGER_REG_PATID_2_OFFSET);
+    addr_hit[20] = (reg_addr == TAGGER_REG_ADDR_CONF_OFFSET);
   end
 
   assign addrmiss = (reg_re || reg_we) ? ~|addr_hit : 1'b0 ;
@@ -441,7 +751,17 @@ module tagger_reg_reg_top #(
                (addr_hit[ 7] & (|(TAGGER_REG_PERMIT[ 7] & ~reg_be))) |
                (addr_hit[ 8] & (|(TAGGER_REG_PERMIT[ 8] & ~reg_be))) |
                (addr_hit[ 9] & (|(TAGGER_REG_PERMIT[ 9] & ~reg_be))) |
-               (addr_hit[10] & (|(TAGGER_REG_PERMIT[10] & ~reg_be)))));
+               (addr_hit[10] & (|(TAGGER_REG_PERMIT[10] & ~reg_be))) |
+               (addr_hit[11] & (|(TAGGER_REG_PERMIT[11] & ~reg_be))) |
+               (addr_hit[12] & (|(TAGGER_REG_PERMIT[12] & ~reg_be))) |
+               (addr_hit[13] & (|(TAGGER_REG_PERMIT[13] & ~reg_be))) |
+               (addr_hit[14] & (|(TAGGER_REG_PERMIT[14] & ~reg_be))) |
+               (addr_hit[15] & (|(TAGGER_REG_PERMIT[15] & ~reg_be))) |
+               (addr_hit[16] & (|(TAGGER_REG_PERMIT[16] & ~reg_be))) |
+               (addr_hit[17] & (|(TAGGER_REG_PERMIT[17] & ~reg_be))) |
+               (addr_hit[18] & (|(TAGGER_REG_PERMIT[18] & ~reg_be))) |
+               (addr_hit[19] & (|(TAGGER_REG_PERMIT[19] & ~reg_be))) |
+               (addr_hit[20] & (|(TAGGER_REG_PERMIT[20] & ~reg_be)))));
   end
 
   assign pat_commit_we = addr_hit[0] & reg_we & !reg_error;
@@ -471,10 +791,40 @@ module tagger_reg_reg_top #(
   assign pat_addr_7_we = addr_hit[8] & reg_we & !reg_error;
   assign pat_addr_7_wd = reg_wdata[31:0];
 
-  assign patid_we = addr_hit[9] & reg_we & !reg_error;
-  assign patid_wd = reg_wdata[31:0];
+  assign pat_addr_8_we = addr_hit[9] & reg_we & !reg_error;
+  assign pat_addr_8_wd = reg_wdata[31:0];
 
-  assign addr_conf_we = addr_hit[10] & reg_we & !reg_error;
+  assign pat_addr_9_we = addr_hit[10] & reg_we & !reg_error;
+  assign pat_addr_9_wd = reg_wdata[31:0];
+
+  assign pat_addr_10_we = addr_hit[11] & reg_we & !reg_error;
+  assign pat_addr_10_wd = reg_wdata[31:0];
+
+  assign pat_addr_11_we = addr_hit[12] & reg_we & !reg_error;
+  assign pat_addr_11_wd = reg_wdata[31:0];
+
+  assign pat_addr_12_we = addr_hit[13] & reg_we & !reg_error;
+  assign pat_addr_12_wd = reg_wdata[31:0];
+
+  assign pat_addr_13_we = addr_hit[14] & reg_we & !reg_error;
+  assign pat_addr_13_wd = reg_wdata[31:0];
+
+  assign pat_addr_14_we = addr_hit[15] & reg_we & !reg_error;
+  assign pat_addr_14_wd = reg_wdata[31:0];
+
+  assign pat_addr_15_we = addr_hit[16] & reg_we & !reg_error;
+  assign pat_addr_15_wd = reg_wdata[31:0];
+
+  assign patid_0_we = addr_hit[17] & reg_we & !reg_error;
+  assign patid_0_wd = reg_wdata[31:0];
+
+  assign patid_1_we = addr_hit[18] & reg_we & !reg_error;
+  assign patid_1_wd = reg_wdata[31:0];
+
+  assign patid_2_we = addr_hit[19] & reg_we & !reg_error;
+  assign patid_2_wd = reg_wdata[31:0];
+
+  assign addr_conf_we = addr_hit[20] & reg_we & !reg_error;
   assign addr_conf_wd = reg_wdata[31:0];
 
   // Read data return
@@ -518,10 +868,50 @@ module tagger_reg_reg_top #(
       end
 
       addr_hit[9]: begin
-        reg_rdata_next[31:0] = patid_qs;
+        reg_rdata_next[31:0] = pat_addr_8_qs;
       end
 
       addr_hit[10]: begin
+        reg_rdata_next[31:0] = pat_addr_9_qs;
+      end
+
+      addr_hit[11]: begin
+        reg_rdata_next[31:0] = pat_addr_10_qs;
+      end
+
+      addr_hit[12]: begin
+        reg_rdata_next[31:0] = pat_addr_11_qs;
+      end
+
+      addr_hit[13]: begin
+        reg_rdata_next[31:0] = pat_addr_12_qs;
+      end
+
+      addr_hit[14]: begin
+        reg_rdata_next[31:0] = pat_addr_13_qs;
+      end
+
+      addr_hit[15]: begin
+        reg_rdata_next[31:0] = pat_addr_14_qs;
+      end
+
+      addr_hit[16]: begin
+        reg_rdata_next[31:0] = pat_addr_15_qs;
+      end
+
+      addr_hit[17]: begin
+        reg_rdata_next[31:0] = patid_0_qs;
+      end
+
+      addr_hit[18]: begin
+        reg_rdata_next[31:0] = patid_1_qs;
+      end
+
+      addr_hit[19]: begin
+        reg_rdata_next[31:0] = patid_2_qs;
+      end
+
+      addr_hit[20]: begin
         reg_rdata_next[31:0] = addr_conf_qs;
       end
 
@@ -547,7 +937,7 @@ endmodule
 
 module tagger_reg_reg_top_intf
 #(
-  parameter int AW = 6,
+  parameter int AW = 7,
   localparam int DW = 32
 ) (
   input logic clk_i,

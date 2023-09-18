@@ -11,8 +11,8 @@ REGGEN_PATH  = $(shell $(BENDER) path register_interface)/vendor/lowrisc_opentit
 REGGEN	     = $(PYTHON) $(REGGEN_PATH)
 
 REGWIDTH        	= 32
-MAXPARTITION 		= 8
-PATID_LEN 			= 4
+MAXPARTITION 		= 16
+PATID_LEN 			= 5
 TAGGER_REGS_PATH   	= data/tagger_regs.py
 
 # --------------

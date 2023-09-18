@@ -28,7 +28,7 @@ extern "C" {
 // Partition address (common parameters)
 #define TAGGER_REG_PAT_ADDR_PAT_ADDR_FIELD_WIDTH 32
 #define TAGGER_REG_PAT_ADDR_PAT_ADDR_FIELDS_PER_REG 1
-#define TAGGER_REG_PAT_ADDR_MULTIREG_COUNT 8
+#define TAGGER_REG_PAT_ADDR_MULTIREG_COUNT 16
 
 // Partition address
 #define TAGGER_REG_PAT_ADDR_0_REG_OFFSET 0x4
@@ -54,21 +54,51 @@ extern "C" {
 // Partition address
 #define TAGGER_REG_PAT_ADDR_7_REG_OFFSET 0x20
 
+// Partition address
+#define TAGGER_REG_PAT_ADDR_8_REG_OFFSET 0x24
+
+// Partition address
+#define TAGGER_REG_PAT_ADDR_9_REG_OFFSET 0x28
+
+// Partition address
+#define TAGGER_REG_PAT_ADDR_10_REG_OFFSET 0x2c
+
+// Partition address
+#define TAGGER_REG_PAT_ADDR_11_REG_OFFSET 0x30
+
+// Partition address
+#define TAGGER_REG_PAT_ADDR_12_REG_OFFSET 0x34
+
+// Partition address
+#define TAGGER_REG_PAT_ADDR_13_REG_OFFSET 0x38
+
+// Partition address
+#define TAGGER_REG_PAT_ADDR_14_REG_OFFSET 0x3c
+
+// Partition address
+#define TAGGER_REG_PAT_ADDR_15_REG_OFFSET 0x40
+
 // Partition ID (common parameters)
 #define TAGGER_REG_PATID_PATID_FIELD_WIDTH 32
 #define TAGGER_REG_PATID_PATID_FIELDS_PER_REG 1
-#define TAGGER_REG_PATID_MULTIREG_COUNT 1
+#define TAGGER_REG_PATID_MULTIREG_COUNT 3
 
 // Partition ID
-#define TAGGER_REG_PATID_REG_OFFSET 0x24
+#define TAGGER_REG_PATID_0_REG_OFFSET 0x44
+
+// Partition ID
+#define TAGGER_REG_PATID_1_REG_OFFSET 0x48
+
+// Partition ID
+#define TAGGER_REG_PATID_2_REG_OFFSET 0x4c
 
 // Address encoding mode switch register (common parameters)
-#define TAGGER_REG_ADDR_CONF_ADDR_COMF_FIELD_WIDTH 32
-#define TAGGER_REG_ADDR_CONF_ADDR_COMF_FIELDS_PER_REG 1
+#define TAGGER_REG_ADDR_CONF_ADDR_CONF_FIELD_WIDTH 32
+#define TAGGER_REG_ADDR_CONF_ADDR_CONF_FIELDS_PER_REG 1
 #define TAGGER_REG_ADDR_CONF_MULTIREG_COUNT 1
 
 // Address encoding mode switch register
-#define TAGGER_REG_ADDR_CONF_REG_OFFSET 0x28
+#define TAGGER_REG_ADDR_CONF_REG_OFFSET 0x50
 
 #ifdef __cplusplus
 }  // extern "C"

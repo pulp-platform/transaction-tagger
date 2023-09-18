@@ -87,7 +87,7 @@ with open('data/tagger_regs.hjson', 'w') as f:
             hwaccess: "hrw",
             fields: [{{
                 bits: "31:0",
-                name: "addr_comf",
+                name: "addr_conf",
                 desc: "2 bits configuration for each partition. 2'b00: OFF, 2'b01: TOR, 2'b10: NA4",
                 resval: "0"
             }}]

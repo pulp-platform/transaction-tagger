@@ -36,7 +36,7 @@
         multireg: {
             name: "PAT_ADDR",
             desc: "Partition address",
-            count: "8",
+            count: "16",
             cname: "TAGGER",
             swaccess: "rw",
             hwaccess: "hrw",
@@ -51,7 +51,7 @@
         multireg: {
             name: "PATID",
             desc: "Partition ID",
-            count: "1",
+            count: "3",
             cname: "TAGGER",
             swaccess: "rw",
             hwaccess: "hrw",
@@ -72,7 +72,7 @@
             hwaccess: "hrw",
             fields: [{
                 bits: "31:0",
-                name: "addr_comf",
+                name: "addr_conf",
                 desc: "2 bits configuration for each partition. 2'b00: OFF, 2'b01: TOR, 2'b10: NA4",
                 resval: "0"
             }]

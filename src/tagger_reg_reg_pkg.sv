@@ -7,7 +7,7 @@
 package tagger_reg_reg_pkg;
 
   // Address widths within the block
-  parameter int BlockAw = 6;
+  parameter int BlockAw = 7;
 
   ////////////////////////////
   // Typedefs for registers //
@@ -51,32 +51,42 @@ package tagger_reg_reg_pkg;
 
   // Register -> HW type
   typedef struct packed {
-    tagger_reg_reg2hw_pat_commit_mreg_t [0:0] pat_commit; // [320:320]
-    tagger_reg_reg2hw_pat_addr_mreg_t [7:0] pat_addr; // [319:64]
-    tagger_reg_reg2hw_patid_mreg_t [0:0] patid; // [63:32]
+    tagger_reg_reg2hw_pat_commit_mreg_t [0:0] pat_commit; // [640:640]
+    tagger_reg_reg2hw_pat_addr_mreg_t [15:0] pat_addr; // [639:128]
+    tagger_reg_reg2hw_patid_mreg_t [2:0] patid; // [127:32]
     tagger_reg_reg2hw_addr_conf_mreg_t [0:0] addr_conf; // [31:0]
   } tagger_reg_reg2hw_t;
 
   // HW -> register type
   typedef struct packed {
-    tagger_reg_hw2reg_pat_commit_mreg_t [0:0] pat_commit; // [331:330]
-    tagger_reg_hw2reg_pat_addr_mreg_t [7:0] pat_addr; // [329:66]
-    tagger_reg_hw2reg_patid_mreg_t [0:0] patid; // [65:33]
+    tagger_reg_hw2reg_pat_commit_mreg_t [0:0] pat_commit; // [661:660]
+    tagger_reg_hw2reg_pat_addr_mreg_t [15:0] pat_addr; // [659:132]
+    tagger_reg_hw2reg_patid_mreg_t [2:0] patid; // [131:33]
     tagger_reg_hw2reg_addr_conf_mreg_t [0:0] addr_conf; // [32:0]
   } tagger_reg_hw2reg_t;
 
   // Register offsets
-  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_COMMIT_OFFSET = 6'h 0;
-  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_0_OFFSET = 6'h 4;
-  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_1_OFFSET = 6'h 8;
-  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_2_OFFSET = 6'h c;
-  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_3_OFFSET = 6'h 10;
-  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_4_OFFSET = 6'h 14;
-  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_5_OFFSET = 6'h 18;
-  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_6_OFFSET = 6'h 1c;
-  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_7_OFFSET = 6'h 20;
-  parameter logic [BlockAw-1:0] TAGGER_REG_PATID_OFFSET = 6'h 24;
-  parameter logic [BlockAw-1:0] TAGGER_REG_ADDR_CONF_OFFSET = 6'h 28;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_COMMIT_OFFSET = 7'h 0;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_0_OFFSET = 7'h 4;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_1_OFFSET = 7'h 8;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_2_OFFSET = 7'h c;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_3_OFFSET = 7'h 10;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_4_OFFSET = 7'h 14;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_5_OFFSET = 7'h 18;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_6_OFFSET = 7'h 1c;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_7_OFFSET = 7'h 20;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_8_OFFSET = 7'h 24;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_9_OFFSET = 7'h 28;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_10_OFFSET = 7'h 2c;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_11_OFFSET = 7'h 30;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_12_OFFSET = 7'h 34;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_13_OFFSET = 7'h 38;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_14_OFFSET = 7'h 3c;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PAT_ADDR_15_OFFSET = 7'h 40;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PATID_0_OFFSET = 7'h 44;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PATID_1_OFFSET = 7'h 48;
+  parameter logic [BlockAw-1:0] TAGGER_REG_PATID_2_OFFSET = 7'h 4c;
+  parameter logic [BlockAw-1:0] TAGGER_REG_ADDR_CONF_OFFSET = 7'h 50;
 
   // Register index
   typedef enum int {
@@ -89,12 +99,22 @@ package tagger_reg_reg_pkg;
     TAGGER_REG_PAT_ADDR_5,
     TAGGER_REG_PAT_ADDR_6,
     TAGGER_REG_PAT_ADDR_7,
-    TAGGER_REG_PATID,
+    TAGGER_REG_PAT_ADDR_8,
+    TAGGER_REG_PAT_ADDR_9,
+    TAGGER_REG_PAT_ADDR_10,
+    TAGGER_REG_PAT_ADDR_11,
+    TAGGER_REG_PAT_ADDR_12,
+    TAGGER_REG_PAT_ADDR_13,
+    TAGGER_REG_PAT_ADDR_14,
+    TAGGER_REG_PAT_ADDR_15,
+    TAGGER_REG_PATID_0,
+    TAGGER_REG_PATID_1,
+    TAGGER_REG_PATID_2,
     TAGGER_REG_ADDR_CONF
   } tagger_reg_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] TAGGER_REG_PERMIT [11] = '{
+  parameter logic [3:0] TAGGER_REG_PERMIT [21] = '{
     4'b 0001, // index[ 0] TAGGER_REG_PAT_COMMIT
     4'b 1111, // index[ 1] TAGGER_REG_PAT_ADDR_0
     4'b 1111, // index[ 2] TAGGER_REG_PAT_ADDR_1
@@ -104,8 +124,18 @@ package tagger_reg_reg_pkg;
     4'b 1111, // index[ 6] TAGGER_REG_PAT_ADDR_5
     4'b 1111, // index[ 7] TAGGER_REG_PAT_ADDR_6
     4'b 1111, // index[ 8] TAGGER_REG_PAT_ADDR_7
-    4'b 1111, // index[ 9] TAGGER_REG_PATID
-    4'b 1111  // index[10] TAGGER_REG_ADDR_CONF
+    4'b 1111, // index[ 9] TAGGER_REG_PAT_ADDR_8
+    4'b 1111, // index[10] TAGGER_REG_PAT_ADDR_9
+    4'b 1111, // index[11] TAGGER_REG_PAT_ADDR_10
+    4'b 1111, // index[12] TAGGER_REG_PAT_ADDR_11
+    4'b 1111, // index[13] TAGGER_REG_PAT_ADDR_12
+    4'b 1111, // index[14] TAGGER_REG_PAT_ADDR_13
+    4'b 1111, // index[15] TAGGER_REG_PAT_ADDR_14
+    4'b 1111, // index[16] TAGGER_REG_PAT_ADDR_15
+    4'b 1111, // index[17] TAGGER_REG_PATID_0
+    4'b 1111, // index[18] TAGGER_REG_PATID_1
+    4'b 1111, // index[19] TAGGER_REG_PATID_2
+    4'b 1111  // index[20] TAGGER_REG_ADDR_CONF
   };
 
 endpackage

@@ -19,10 +19,10 @@ module tb_tagger #(
     /// propagate awuser signal
     parameter int unsigned TbAxiUserWidthFull   = 32'd8,
     /// Number of partition supported
-    parameter int unsigned TbMaxPartition   = 8,
+    parameter int unsigned TbMaxPartition   = 16,
     /// User signal offset
     parameter int unsigned TbAxiUserIdMsb 	= 7,
-    parameter int unsigned TbAxiUserIdLsb 	= 4,
+    parameter int unsigned TbAxiUserIdLsb 	= 3,
     /// Granularity of configuration
     parameter int unsigned TbTaggerGran 	= 3,
     /// Cycle time for the TB clock generator
@@ -45,8 +45,8 @@ module tb_tagger #(
 		CfgAddr5 	= 32'h18,
 		CfgAddr6 	= 32'h1c,
 		CfgAddr7 	= 32'h20,
-		CfgPatid0 	= 32'h24,
-		CfgConf0 	= 32'h28
+		CfgPatid0 	= 32'h44,
+		CfgConf0 	= 32'h50
 	} tagger_cfg_addr_e;
 
 	/////////////////////////////
@@ -362,7 +362,7 @@ module tb_tagger #(
 		automatic logic[31:0] 	addr1 = ((TbNapotAddr1+TbNapotSize1)>>2);
 		automatic logic[31:0]	addr2 = ((TbNapotAddr2+TbNapotSize2)>>2);
 		automatic logic[31:0] 	addr3 = ((TbNapotAddr3+TbNapotSize3)>>2);
-		automatic logic[31:0]	patid = 32'h7654_3210;
+		automatic logic[31:0]	patid = 32'h18820;	// 3 2 1 0
 		automatic logic[31:0] 	conf = 32'h0000_00FF;
 		automatic logic[31:0] 	commit = 32'd1;
 		$info("Configuring registers for NAPOT mode!");
@@ -384,7 +384,7 @@ module tb_tagger #(
 		automatic logic[31:0] 	addr1 = (TbTorAddr1>>2);
 		automatic logic[31:0]	addr2 = (TbTorAddr2>>2);
 		automatic logic[31:0] 	addr3 = (TbTorAddr3>>2);
-		automatic logic[31:0]	patid = 32'h0123_4567;
+		automatic logic[31:0]	patid = 32'h214C7; 	// 4 5 6 7
 		automatic logic[31:0] 	conf = 32'h0000_0055;
 		automatic logic[31:0] 	commit = 32'd1;
 		$info("Configuring registers for NAPOT mode!");
