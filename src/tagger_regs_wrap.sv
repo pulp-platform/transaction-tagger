@@ -93,6 +93,9 @@ module tagger_regs_wrap #(
 	always_comb begin
 		tag_tab_d = tag_tab_q;
 		tagger_hw2reg.pat_commit[0].de = 0;
+		tagger_hw2reg.pat_commit[0].d  = 0;
+		conf_temp = '0;
+		patid_temp = '0;
 
 		// only pass the signal when commit is high
 		if (tagger_reg2hw.pat_commit[0].q) begin
@@ -106,9 +109,8 @@ module tagger_regs_wrap #(
 				tag_tab_d[k].patid 		= patid_temp[PATID_LEN-1:0];
 				tag_tab_d[k].conf 		= conf_temp[1:0];
 			end
-			// clear the commit signal after reading
 			
-			tagger_hw2reg.pat_commit[0].d = 0;
+			// clear the commit signal after reading
 			tagger_hw2reg.pat_commit[0].de = 1;
 		end
 	end
