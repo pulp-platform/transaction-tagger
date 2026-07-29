@@ -47,9 +47,9 @@ module tagger_patid #(
   logic [ADDR_LEN-1:0] conf_addr_curr_n;
   assign conf_addr_curr_n = ~conf_addr_curr_i_mod;
 
-  lzc #(
-    .WIDTH(ADDR_LEN),
-    .MODE (1'b0)
+  cc_lzc #(
+    .Width(ADDR_LEN),
+    .Mode (cc_pkg::LZC_TRAILING_ZERO_CNT)
   ) i_lzc (
     .in_i   (conf_addr_curr_n),
     .cnt_o  (trail_ones),

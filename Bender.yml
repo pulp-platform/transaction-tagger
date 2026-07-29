@@ -9,11 +9,11 @@ package:
 
 
 dependencies:
-  axi:                      { git: "https://github.com/pulp-platform/axi",                    version: 0.39.0 }
-  common_cells:             { git: "https://github.com/pulp-platform/common_cells",           version: 1.29.0 }
+  axi:                      { git: "https://github.com/pulp-platform/axi",                    rev: devel }
+  common_cells:             { git: "https://github.com/pulp-platform/common_cells",           version: 2.0.0-beta.2 }
   common_verification:      { git: "https://github.com/pulp-platform/common_verification",    version: 0.2.0  }
-  register_interface:       { git: "https://github.com/pulp-platform/register_interface",     version: 0.4.1  }
-  tech_cells_generic:       { git: "https://github.com/pulp-platform/tech_cells_generic.git", version: 0.2.9  }
+  register_interface:       { git: "https://github.com/pulp-platform/register_interface",     rev: common-cells-v2 }
+  tech_cells_generic:       { git: "https://github.com/pulp-platform/tech_cells_generic.git", version: 0.2.14  }
 
 export_include_dirs:
   - include

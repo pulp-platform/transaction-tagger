@@ -117,9 +117,9 @@ module tagger #(
     );
   end
 
-  lzc #(
-    .WIDTH(MAXPARTITION),
-    .MODE (1'b0)
+  cc_lzc #(
+    .Width(MAXPARTITION),
+    .Mode (cc_pkg::LZC_TRAILING_ZERO_CNT)
   ) i_lzc_r (
     .in_i   (match_r),
     .cnt_o  (trail_zero_r),
@@ -149,9 +149,9 @@ module tagger #(
     );
   end
 
-  lzc #(
-    .WIDTH(MAXPARTITION),
-    .MODE (1'b0)
+  cc_lzc #(
+    .Width(MAXPARTITION),
+    .Mode (cc_pkg::LZC_TRAILING_ZERO_CNT)
   ) i_lzc_w (
     .in_i   (match_w),
     .cnt_o  (trail_zero_w),
